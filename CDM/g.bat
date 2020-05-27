@@ -1,8 +1,8 @@
 @echo off
 
 del *.exe
-
-set incs=-DNDEBUG -DSTRICT -DNDEBUG -DWIN32 -DINC_FLEN -I../Lib3
+ 
+set incs=-DNDEBUG -DSTRICT -DNDEBUG -DWIN32 -DINC_FLEN -I../Lib3 -DTRACE_ON
 
 set opts=-fwhole-program -fstrict-aliasing -fomit-frame-pointer -ffast-math ^
 -fno-rtti -fno-exceptions -fpermissive  ^

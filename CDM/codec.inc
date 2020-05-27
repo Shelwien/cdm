@@ -51,7 +51,7 @@ process_blklen( uint& blklen, uint& freq0, uint& f_compflag ) {
   uint bit;
 
 #ifdef TRACE_ON
-double rc_codelen = double(rc_outbytes)*8 + double((0x100000-LOG2(range>>16)))/65536;
+double rc_codelen = double(this->rc_outbytes)*8 + double((0x100000-LOG2(this->range>>16)))/65536;
 #endif
   bit = (blklen!=maxblk);
   rc_BProcess( p_maxblk, bit );
@@ -129,7 +129,7 @@ double rc_codelen = double(rc_outbytes)*8 + double((0x100000-LOG2(range>>16)))/6
 
 #ifdef TRACE_ON
 if( f_DEC==0 ) {
-  double rc_codelen1 = double(rc_outbytes)*8 + double((0x100000-LOG2(range>>16)))/65536 - rc_codelen;
+  double rc_codelen1 = double(this->rc_outbytes)*8 + double((0x100000-LOG2(this->range>>16)))/65536 - rc_codelen;
   printf( "!inppos=%-8I64i blklen=%4i freq0=%4i method=%i headerbits=%6.3lf ", inppos, blklen*8, freq0, f_compflag, rc_codelen1 );
 }
   return rc_codelen;
@@ -155,7 +155,7 @@ double rc_codelen0 =
   process_blklen( blklen, freq0, f_compflag ); freq1=blklen*8-freq0;
 
 #ifdef TRACE_ON
-double rc_codelen = double(rc_outbytes)*8 + double((0x100000-LOG2(range>>16)))/65536;
+double rc_codelen = double(this->rc_outbytes)*8 + double((0x100000-LOG2(this->range>>16)))/65536;
 #endif
 
   if( f_compflag==0 ) {
@@ -215,7 +215,7 @@ AllBits: {}
   rc_Renorm();
 
 #ifdef TRACE_ON
-double rc_codelen1 = double(rc_outbytes)*8 + double((0x100000-LOG2(range>>16)))/65536;
+double rc_codelen1 = double(this->rc_outbytes)*8 + double((0x100000-LOG2(this->range>>16)))/65536;
 printf( "blockbits=%8.3lf gain=%7.3lf!\n", rc_codelen1-rc_codelen, double(blklen*8)-(rc_codelen1-rc_codelen0) );
 #endif
 
